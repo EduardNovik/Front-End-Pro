@@ -2,7 +2,7 @@
 
 // let output = ''
 // for (let i = 10; i <= 20; i++) {
-//     output += i + ', ' 
+//     output += `${i}, `
 // }
 // console.log(output)
 
@@ -14,7 +14,7 @@
 
 // let output = ''
 // for (let i = 10; i <= 20; i++ ) {
-//     output += i**2 + ', ' 
+//     output += `${i**2}, `
 // }
 // console.log(output)
 
@@ -24,10 +24,9 @@
 // 3 Вивести таблицю множення на 7
 
 // let output = ''
-// let result = '\n'
+
 // for (let i = 1; i <= 10; i++ ) {
-//     output += `7 * ${i} = ${7*i}`
-//     output += result
+//     output += `7 * ${i} = ${7*i}\n`
 // }
 // console.log(output)
 
@@ -40,7 +39,7 @@
 // let output = ''
 
 // for (let i = 1; i <= 15; i++ ) {
-//     output += (i*(i+1))/2 + ', '
+//     output += `${i*(i+1)/2}, `
 // }
 // console.log(output)
 
@@ -76,7 +75,7 @@
 
 // let output = ''
 // for (let i = 1; i <= 500; i++ ) {
-//     output += ((i*(i+1))/2)/i + ', ' 
+//     output += `${(i*(i+1)/2)/i}, `
 // }
 // console.log(output)
 
@@ -115,7 +114,7 @@
 // for (let i = 100; i <= 200; i++ ) {
 
 //     if (i % 3 == 0) {
-//         output += i + ', '
+//         output += `${i}, `
 //     }
 // }
 // console.log(output)
@@ -129,8 +128,8 @@
 // let output = ''
 // for(i = 1; i <= natural; i++ ) {
 //     if ( natural % i == 0)
-//     output += i + ', '
-// }10
+//     output += `${i}, `
+// } 
 
 // alert(output)
 
@@ -168,14 +167,14 @@
 
 // 12 Надрукувати повну таблицю множення від 1 до 10
 
-let result = ''
-let output = ''
-for(let i = 1; i <= 10; i++ ) {
-        for (let j = 1; j <=10; j++) {
-                console.log(output = `${i} * ${j} = ${i*j} `); 
-        }    
-        console.log(result);
-}
+// let result = ''
+// let output = ''
+// for(let i = 1; i <= 10; i++ ) {
+//         for (let j = 1; j <=10; j++) {
+//                 console.log(output = `${i} * ${j} = ${i*j} `); 
+//         }    
+//         console.log(result);
+// }
 
  
 
