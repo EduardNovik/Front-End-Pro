@@ -1,41 +1,27 @@
 // Реалізуйте функцію generateKey(length, characters), яка повертає рядок випадкових символів із набору characters довжиною length. span>
 
+// const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
 
-function generateKey() {
+// const key = generateKey(16, characters);
+// console.log(key); // eg599gb60q926j8i
+
+
+const characters = 'abcdefghijklmnopqrstuvwxyz0123456789'
+const length = 10
+
+function generateKey(length, characters) {
+
   let text = '';
-  let quantityOfChatacters   
-  let inputCharacters
+  let charactersLength = characters.length;
 
-  do{
+  for (let i = 0; i < length; i++)
 
-    inputCharacters = prompt('Please, type the characters')
-    if(inputCharacters === null ){
-      alert('Refresh the page and try again')
-      return
-    }
-   
-  }while(inputCharacters.trim() === '')
-
-
-  do{
-    quantityOfChatacters = prompt('How many characters you want?')
-    if(quantityOfChatacters === null){
-      alert('Refresh the page and try again')
-      return
-    }
-
-  } while(isNaN(+quantityOfChatacters) || quantityOfChatacters.trim() === '')
-
-
-  for (var i = 0; i < quantityOfChatacters; i++)
-
-    text += inputCharacters.charAt(Math.floor(Math.random() * inputCharacters.length));
+    text += characters.charAt(Math.floor(Math.random() * charactersLength));
 
   return text;
-  
 }
 
-console.log(generateKey());
+console.log(generateKey(length, characters));
 
 
 

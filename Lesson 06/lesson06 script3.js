@@ -7,35 +7,13 @@
 
 
 
-const arrayLength = prompt(`Array Length`) 
+const array = [1,4,8,16,'a','b','c','d','e']
 
-if (arrayLength === null || arrayLength.trim() === "" || isNaN(+arrayLength)) {
-  alert(`Pleasere fresh the page and type the number`);
-} else {
-  let array = [];
-  for (var i = 0; i < arrayLength; i++) {
-    array[i] = prompt(`Please type the element which has index ${i}`);
-    if (array[i] === null) {
-      alert("Wrong");
-      array.pop();
-      break;
-    }
-
-    if (array[i] === "") {
-      alert("The element cant be empty");
-      array[i] = prompt("Please type the element again");
-    }
-
-    if (!isNaN(+array[i])) {
-      array[i] = Number(array[i]);
-    }
-  }
-  console.log(array);
-
-  function meanValue() {
+  function meanValue(array) {
     let sumOfNumbers = 0;
-    let quntityOfNumbers = ''
-    for (var i = 0; i < arrayLength; i++) {
+    let quntityOfNumbers = 0
+    let arrayLength = array.length
+    for (let i = 0; i < arrayLength; i++) {
       if (!isNaN(array[i])) {
         sumOfNumbers += array[i];
         quntityOfNumbers++
@@ -43,8 +21,9 @@ if (arrayLength === null || arrayLength.trim() === "" || isNaN(+arrayLength)) {
     }
     console.log('Mean value is: '+ sumOfNumbers/quntityOfNumbers);
   }
-  meanValue();
-}
+
+  meanValue(array);
+
 
 
 
