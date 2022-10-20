@@ -7,22 +7,22 @@
 
 
 
-const array = [1,4,8,16,'a','b','c','d','e']
+// const array = [1,4,8,16,'a','b','c','d','e']
 
-  function meanValue(array) {
-    let sumOfNumbers = 0;
-    let quntityOfNumbers = 0
-    let arrayLength = array.length
-    for (let i = 0; i < arrayLength; i++) {
-      if (!isNaN(array[i])) {
-        sumOfNumbers += array[i];
-        quntityOfNumbers++
-      }
-    }
-    console.log('Mean value is: '+ sumOfNumbers/quntityOfNumbers);
-  }
+//   function meanValue(array) {
+//     let sumOfNumbers = 0;
+//     let quntityOfNumbers = 0
+//     let arrayLength = array.length
+//     for (let i = 0; i < arrayLength; i++) {
+//       if (!isNaN(array[i])) {
+//         sumOfNumbers += array[i];
+//         quntityOfNumbers++
+//       }
+//     }
+//     console.log('Mean value is: '+ sumOfNumbers/quntityOfNumbers);
+//   }
 
-  meanValue(array);
+//   meanValue(array);
 
 
 
@@ -38,46 +38,49 @@ const array = [1,4,8,16,'a','b','c','d','e']
 
 
 
+  // let a;
+  // let b;
+  // let sign;
+ 
 
-  // function doMath(a, sign, b) {
-  //   let x;
-  //   let y;
-  //   let znak;
-  //   let result;
-  //   do {
-  //     x = prompt("Please, type the first number");
-  //     if (x === null) {
-  //       alert("Please, refresh the page and type value again");
-  //       return;
-  //     }
-  //   } while (x.trim() === "" || isNaN(+x));
+  // do {
+  //   a = prompt("Please, type the first number");
+  //   if (a === null) {
+  //     alert("Wrong number");
+  //     break;
+  //   }
+  // } while (a.trim() === "" || isNaN(Number(a)));
 
-  //   do {
-  //     y = prompt("Please, type the second number");
-  //     if (y === null) {
-  //       alert("Please, refresh the page and type value again");
-  //       return;
-  //     }
-  //   } while (y.trim() === "" || isNaN(+y));
+  // do {
+  //   b = prompt("Please, type the second number");
+  //   if (b === null) {
+  //     alert("Wrong number");
+  //     break;
+  //   }
+  // } while (b.trim() === "" || isNaN(Number(b)));
 
-  //   do {
-  //     znak = prompt(
-  //       "Please, type one of the arithmetic operations (+, -, *, /, %, ^)"
-  //     );
-  //     if (znak === null) {
-  //       alert("Please, refresh the page and type arithmetic operation again");
-  //       return;
-  //     }
-  //   } while (
-  //     znak.trim() === "" ||
-  //     (znak !== "+" &&
-  //       znak !== "-" &&
-  //       znak !== "*" &&
-  //       znak !== "/" &&
-  //       znak !== "%" &&
-  //       znak !== "^")
+  // do {
+  //   sign = prompt(
+  //     "Please, type one of the arithmetic operations (+, -, *, /, %, ^)"
   //   );
+  //   if (sign === null) {
+  //     alert("Please, refresh the page and type arithmetic operation again");
+  //     break;
+  //   }
+  // } while (
+  //   sign.trim() === "" ||
+  //   (sign !== "+" &&
+  //     sign !== "-" &&
+  //     sign !== "*" &&
+  //     sign !== "/" &&
+  //     sign !== "%" &&
+  //     sign !== "^")
+  // );
 
+
+
+  // function doMath(x, znak, y) {
+  //   let result;
   //   let numberX = Number(x);
   //   let numberY = Number(y);
 
@@ -101,7 +104,8 @@ const array = [1,4,8,16,'a','b','c','d','e']
   //     console.log(`${numberX} ${znak} ${numberY} = ${result}`);
   //   }
   // }
-  // doMath();
+
+  // doMath(a, sign, b);
 
 
 
@@ -196,43 +200,43 @@ const array = [1,4,8,16,'a','b','c','d','e']
 // 'func(" hello world", ['l', 'd'])' поверне нам "heo wor". Вихідний рядок та символи для видалення задає користувач
 
 
-// let text
-// let arrayWithElemToDelete = []
-// let elemToDelete 
+let text
+let arrayWithElemToDelete = []
+let elemToDelete 
 
-//   do {
-//     text = prompt("Type the data please");
-//     if (text === null) {
-//       alert("You haven't typed the data");
-//       break;
-//     }
-//   } while (text.trim() === "");
+  do {
+    text = prompt("Type the data please");
+    if (text === null) {
+      alert("You haven't typed the data");
+      break;
+    }
+  } while (text.trim() === "");
 
-//   console.log(`Input data is: ${text}`);
+  console.log(`Input data is: ${text}`);
 
-//   do {
-//     elemToDelete = prompt("Type the elements to be removed or press cancel to stop input the data.");
+  do {
+    elemToDelete = prompt("Type the elements to be removed or press cancel to stop input the data.");
 
-//     arrayWithElemToDelete.push(elemToDelete);
+    arrayWithElemToDelete.push(elemToDelete);
 
-//   } while (elemToDelete !== null);
+  } while (elemToDelete !== null);
 
-// arrayWithElemToDelete.pop();
+arrayWithElemToDelete.pop();
 
-// console.log(arrayWithElemToDelete);
+console.log(arrayWithElemToDelete);
 
-// function removeElem(a, b) {
+function removeElem(a, b) {
 
-//   if( a === null){
-//     return
-//   }
+  if( a === null){
+    return
+  }
 
-//   let modifyToArray = [...a];
-//   let filteredArray;
+  let modifyToArray = [...a];
+  let filteredArray;
 
-//   filteredArray = modifyToArray.filter((elem) => !b.includes(elem));
+  filteredArray = modifyToArray.filter((elem) => !b.includes(elem));
 
-//   console.log(filteredArray.join(""));
-// }
+  console.log(filteredArray.join(""));
+}
 
-// removeElem(text, arrayWithElemToDelete);
+removeElem(text, arrayWithElemToDelete);
