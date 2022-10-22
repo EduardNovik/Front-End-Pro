@@ -3,11 +3,10 @@
 
  function outer (num) {
 
-    function inner (b) {
-     return num += b
+   return function inner (b) {
+      num += b
+      return num
    }
-
-   return inner;
 }
 
 
