@@ -6,31 +6,47 @@
 
 
 
+
+// клас Будинок
+// властивості
+// масив квартир, який при створенні пустий
+// максимальна кількість квартир
+// методи
+// конструктор, який приймає один параметр: максимальну кількість квартир
+// додати квартиру - метод повинен приймати екземпляр класу Квартира, 
+// перевіряти, чи не буде кількість перевищувати максимальну кількість квартир, 
+// і якщо це так, додати квартиру, в іншому випадку виводить у консоль відповідне повідомлення
+
+
+
 class House {
-  numberOfHouse;
-  numberOfFloors;
-  numberOfHousesInTheStreet;
-  numberOfApartmentsInHouse = 0;
+  maxNumberOfApartmentsInHouse;
+  numberOfOccupiedApartments = 0;
   apartmentsInHouse = [];
 
-  constructor(numberOfHouse, numberOfFloors, numberOfHousesInTheStreet) {
-    this.numberOfHouse = numberOfHouse;
-    this.numberOfFloors = numberOfFloors;
-    this.numberOfHousesInTheStreet = numberOfHousesInTheStreet;
+  constructor(maxNumberOfApartmentsInHouse) {
+    this.maxNumberOfApartmentsInHouse = maxNumberOfApartmentsInHouse;
   }
 
   addApartment(apartment) {
-    if (this.numberOfHouse > 0 || this.numberOfHouse <= 200) {
+    if (this.numberOfOccupiedApartments < this.maxNumberOfApartmentsInHouse) {
     this.apartmentsInHouse.push(apartment);
-    this.numberOfApartmentsInHouse++;
+    this.numberOfOccupiedApartments++;
+    }
+    else{
+      console.log(`\nYou can't add more apartments to the house. The maximum amount of apartments is: ${this.maxNumberOfApartmentsInHouse}
+      \n----------------------------------------------------------------------------------------------`);
     }
   }
 
   getInfoAboutHouse(){
     console.log("\nHouse:\n");
-    console.log(`Number of the house: ${this.numberOfHouse}, Number of floors in house: ${this.numberOfFloors}, Number of houses on the street: ${this.numberOfHousesInTheStreet}`);
-    console.log("\nWho lives in the Apartment:\n");
-    console.log(this.apartmentsInHouse);
+    console.log(`The maximum number of apartments in the house: ${this.maxNumberOfApartmentsInHouse} \nNumber of occupied apartments: ${this.numberOfOccupiedApartments}`);
+    console.log("\nWho live's in the apartment:");
+    this.apartmentsInHouse.forEach((elem) => {
+    console.log(`\nNumber of the apartment: ${elem.numberOfFlat}\n`)
+    elem.apartmentResidents.forEach(item => console.log(`Name: ${item.name}, Surname: ${item.surname}, Age: ${item.age}`))
+  })
     console.log("-------------------------------------------------------------------------------------");
   }
 }
@@ -84,17 +100,23 @@ const apartment2 = new Apartment(42);
 apartment2.addPerson(people4);
 apartment2.addPerson(people5);
 
+
 const apartment3 = new Apartment(52);
 apartment3.addPerson(people6);
 apartment3.addPerson(people7);
 
+const apartment4 = new Apartment(11);
+apartment4.addPerson(people6);
+apartment4.addPerson(people7);
 
-const house = new House(2, 2, 200);
-const house2 = new House(1, 1, 200);
+
+const house = new House(2);
+const house2 = new House(1);
 
 
 house.addApartment(apartment);
 house.addApartment(apartment2);
+house.addApartment(apartment4)
 house.getInfoAboutHouse()
 
 
