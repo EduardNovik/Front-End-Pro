@@ -171,10 +171,11 @@ const liInCategories = document.querySelector('#categories').querySelectorAll('l
 const ulElementProducts = document.querySelector('#products')
 const description = document.querySelector('#description')
 const buyBtn = document.querySelector('#buy-button')
-const removeBtn = buyBtn.style.visibility = 'hidden'
+buyBtn.style.visibility = 'hidden'
 const purchase = document.querySelector('#purchase')
 const myOrdersBtn = document.querySelector('.my-orders')
 const refreshBtnInCategoriesBlock = document.querySelector('.refresh')
+const pElemInPurchaseBlock = document.querySelector('#buy-message')
 
 let productsToBuyArray = []
 
@@ -200,7 +201,7 @@ function showProducts(e) {
    );
 
    const liInProducts = ulElementProducts.querySelectorAll("li");
-   let removeProducts = liInProducts.forEach((element) => element.remove());
+   liInProducts.forEach((element) => element.remove());
 
   for (let j = 1; j <= productsArray.length; j++){
     const createLiTag = document.createElement("li")
@@ -227,6 +228,7 @@ function showProducts(e) {
       return result;
     },0);
     purchase.style.display = 'block'
+    description.style.visibility = 'visible'
     description.innerText = selectedProductDescription;
     buyBtn.style.visibility = "visible";
   }
@@ -240,11 +242,21 @@ function showProducts(e) {
 
 
 function addForm () {
+  const form = document.querySelector('form')
 
+  if (form !== null){
+    form.remove()
+    description.style.visibility = 'hidden'
+    pElemInPurchaseBlock.innerText = 'Thank you for the purchase!'
+    pElemInPurchaseBlock.style.color = 'LightSeaGreen'
+    return
+  }
   
-  const form = document.querySelector('form') 
-
   if (form === null) {
+    pElemInPurchaseBlock.innerText = ''
+    description.style.visibility = 'visible'
+    
+
     const addFormElem = document.createElement('form')
     purchase.insertAdjacentElement('beforeend', addFormElem)
   
@@ -347,23 +359,23 @@ function addForm () {
 
 
 
-
     function addProductsToProductsToBuyArray() {
       let currentProductDescription = document.querySelector("#description").textContent;
+      
       for (let i = 0; i< products.length; i++){
         if (currentProductDescription === products[i].description) {
-          
+
           productsToBuyArray.push({
-          Name_of_client:document.querySelector("#name").value,
-          City: document.querySelector("#city").value,
-          Post_office_number: document.querySelector("#post").value,
-          Payment_method: document.querySelector("#payment").value,
-          Number_of_products: document.querySelector("#products-number").value,
-          Date: new Date().toLocaleDateString(),
-          Name_of_Product: products[i].name,
-          Total_price: products[i].price * document.querySelector("#products-number").value + '$',
-          Unique_order_id: new Date().valueOf(),
-          Product_description: products[i].description
+            Name_of_client:document.querySelector("#name").value,
+            City: document.querySelector("#city").value,
+            Post_office_number: document.querySelector("#post").value,
+            Payment_method: document.querySelector("#payment").value,
+            Number_of_products: document.querySelector("#products-number").value,
+            Date: new Date().toLocaleDateString(),
+            Name_of_Product: products[i].name,
+            Total_price: products[i].price * document.querySelector("#products-number").value + '$',
+            Unique_order_id: new Date().valueOf(),
+            Product_description: products[i].description
           })
         }
       }
@@ -373,7 +385,6 @@ function addForm () {
 
 
     function validateForm (e) {
-
       let inputElemName = document.querySelector('#name')
       let selectElemCity = document.querySelector('#city')
       let inputElemPost = document.querySelector('#post')
@@ -381,7 +392,6 @@ function addForm () {
       let inputElemProductNum = document.querySelector('#products-number')
       const addMessageBelowForm = document.createElement('p') 
       addMessageBelowForm.setAttribute('id','message-below-form')
-      const MessageBelowForm = document.querySelector('#message-below-form')
       const lastErrorMessage = document.querySelector('#message-below-form:nth-child(12)')
 
       if(lastErrorMessage !== null){
@@ -389,26 +399,29 @@ function addForm () {
       }
       
       if(!isNaN(Number(inputElemName.value)) || inputElemName.value.trim() === ''
-       || selectElemCity.options.length == 0 || selectElemPayment.options.length == 0
-       || inputElemPost.value === '' || inputElemProductNum.value === ''){
+      || selectElemCity.value === '' || selectElemPayment.value === ''
+      || inputElemPost.value.trim() === '' || inputElemProductNum.value.trim() === ''){
         addMessageBelowForm.innerText = 'Invalid data, please try again'
         addMessageBelowForm.style.color = 'red'
         addFormElem.insertAdjacentElement('beforeend', addMessageBelowForm)
         e.preventDefault()
+        return
       }
       else{
-        e.preventDefault()
         addProductsToProductsToBuyArray()
+        e.preventDefault()
       }
     }
-      
-    const submitButton = document.querySelector('#submit')
+  }
+
+  const submitButton = document.querySelector('#submit')
+
+  if (productsToBuyArray.length === 0) {
     submitButton.addEventListener('click', addLocalStorageToProductsToBuyArray, {once: true})
-    submitButton.addEventListener('click', validateForm)
   }
-  else {
-    return
-  }
+
+  submitButton.addEventListener('click', validateForm)
+
 }
 
 
@@ -445,16 +458,16 @@ function removeForm() {
   const formForDelete = document.querySelector("form");
   if (formForDelete === null) {
     return;
-  } else {
-    formForDelete.remove();
   }
+
+  formForDelete.remove();
 }
 
 
 
 function addOrdersToCategoryBlock (){
-
   const liInCategories = document.querySelector('#categories').querySelectorAll('li')
+  pElemInPurchaseBlock.innerText = ''
 
   if(productsToBuyArray.length === 0){
     description.innerText = ''
@@ -475,13 +488,19 @@ function addOrdersToCategoryBlock (){
   if(productsToBuyArray.length !== 0 ){
 
     const form = document.querySelector("form")
+
     if(form !== null && buyBtn !== null) {
       form.remove();
       buyBtn.remove();
     }
+
+    if (buyBtn !== null ){
+      buyBtn.remove();
+    }
+
     description.innerText = ''
-    const removeProducts = ulElementProducts.querySelectorAll("li").forEach((element) => element.remove());
-    const removeCategories = liInCategories.forEach(item => item.remove())
+    ulElementProducts.querySelectorAll("li").forEach((element) => element.remove());
+    liInCategories.forEach(item => item.remove())
 
     for (let i = 0; i < productsToBuyArray.length; i++){
 
@@ -523,6 +542,7 @@ function showDetailsAndDescriptionOfOrder(e) {
   let targetProduct = e.target;
   let uniqueOrderIdAttribute = targetProduct.getAttribute("unique-order-id");
   const orderDetailsFirstLiElem = document.querySelector("#products li:nth-child(1)");
+  description.style.visibility = 'visible'
 
   
 
@@ -556,6 +576,7 @@ function deleteOrderBtn(e) {
   let targetBtn = e.target;
   let uniqueOrderIdAttribute = targetBtn.getAttribute("deleteBtn-unique-order-id");
   const allLiInCategories = document.querySelector("#categories").querySelectorAll(".order");
+  const liInProductsBlock = document.querySelector('#products').querySelector('li')
 
   for (i = 0; i < allLiInCategories.length; i++) {
     if(uniqueOrderIdAttribute === allLiInCategories[i].getAttribute('unique-order-id')){
@@ -567,19 +588,20 @@ function deleteOrderBtn(e) {
   for (j = 0; j < productsToBuyArray.length; j++){
     if(Number(uniqueOrderIdAttribute) === productsToBuyArray[j].Unique_order_id ){
        productsToBuyArray.splice([j], 1)
-      console.log(productsToBuyArray);
     }
 
     localStorage.setItem('orders', JSON.stringify(productsToBuyArray)) 
   }
 
-  ulElementProducts.querySelector('li').remove()
+  if(liInProductsBlock !== null){
+    liInProductsBlock.remove()
+  }
   description.innerText =''
 }
   
 
 
-function refreshHendler(){
+function refreshHandler(){
   location.reload()
 }
 
@@ -591,7 +613,7 @@ buyBtn.addEventListener('click', addForm)
 liInCategories.forEach(element => element.addEventListener('click', showProducts));
 myOrdersBtn.addEventListener('click', addOrdersToCategoryBlock)
 
-refreshBtnInCategoriesBlock.addEventListener('click', refreshHendler)
+refreshBtnInCategoriesBlock.addEventListener('click', refreshHandler)
 
 
 
