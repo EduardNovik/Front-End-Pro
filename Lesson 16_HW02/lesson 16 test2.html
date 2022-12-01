@@ -28,13 +28,16 @@
 <body>
     <div class="container">
         <form action="#" id='form'>
-            <label for="name">First and Last Name</label>
-            <input type="text" id="name" required>
+            <label for="name" class="input-header1">First name</label>
+            <input type="text" class="input-header1"id="name" required>
+            <label for="name" class="input-header2">Last name</label>
+            <input type="text" class="input-header2"id="surname" required>
+            
 
-            <label for="date">Date of birth</label>
+            <label for="date" class="input-header3">Date of birth</label>
             <input type="text" id="date" required>
 
-            <legend>Your gender</legend>
+            <legend class="input-header4">Your gender</legend>
             <label for="male">Male
                 <input type="radio" id="male" value="Male" name="choose_gender" required>
             </label>
@@ -42,18 +45,18 @@
                 <input type="radio" id="female" value="Female" name="choose_gender" required>
             </label>
 
-            <label for="city">Your city</label>
+            <label for="city" class="input-header5">Your city</label>
             <select name="" id="city" required>
                 <option value="">Please select the city</option>
                 <option value="Kyiv">Kyiv</option>
                 <option value="London">London</option>
             </select>
 
-            <label for="address">Your address</label>
+            <label for="address" class="input-header6">Your address</label>
             <textarea name="" id="address" cols="30" rows="5" required></textarea>
 
-            <div class="language">
-                <legend>Your languages</legend>
+            <div class="language" >
+                <legend class="input-header7" >Your languages</legend>
 
                 <input type="checkbox" id="english" required value="English">
                 <label for="english">English</label>

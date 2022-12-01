@@ -19,8 +19,6 @@ const inputFemale = document.querySelector('#female')
 const optionElemKyiv = document.querySelector('option:nth-child(2)')
 const optionElemLondon = document.querySelector('option:nth-child(3)')
 
-
-
 function checkboxChecked(e) {
   if (
     listOfInputInLanguage[0].checked ||
@@ -35,63 +33,48 @@ function checkboxChecked(e) {
 btn.addEventListener('click', checkboxChecked)
 
 
-
-
 function createTable() {
-    const tableElem = document.querySelector('table:nth-child(14)')
-    const createTableElem = document.createElement('table')
-    form.insertAdjacentElement('beforeend', createTableElem)
-    const createTrElem1 = document.createElement('tr')
-    const createTrElem2 = document.createElement('tr')
+
+  const createTableElem = document.createElement('table')
+  createTableElem.setAttribute('id', "table-with-data")
+  form.insertAdjacentElement('beforeend', createTableElem)
+  const tableElem = document.querySelectorAll('#table-with-data')
+  const createTrElem1 = document.createElement('tr')
+  const createTrElem2 = document.createElement('tr')
     createTableElem.insertAdjacentElement('beforeend', createTrElem1)
     createTableElem.insertAdjacentElement('beforeend', createTrElem2)
 
-    const createTdElem1 = document.createElement('td')
-    const createTdElem2 = document.createElement('td')
-    const createTdElem3 = document.createElement('td')
-    const createTdElem4 = document.createElement('td')
-    const createTdElem5 = document.createElement('td')
-    const createTdElem6 = document.createElement('td')
+    let createTdElems = []
+    for (let i = 1; i <= 7; i++){
+      createTdElems[i] = document.createElement('td')
+      createTdElems[i].innerText = document.querySelector(`.input-header${i}`).textContent
+      createTrElem1.insertAdjacentElement('beforeend', createTdElems[i])
+    }
+    
+    let createTdElem2= []
+    for (let i = 1; i <= 7; i++){
+      createTdElem2[i] = document.createElement('td')
+    }
 
-    createTdElem1.innerText = document.querySelector('label:nth-child(1)').textContent
-    createTdElem2.innerText = document.querySelector('label:nth-child(3)').textContent
-    createTdElem3.innerText = document.querySelector('legend:nth-child(5)').textContent
-    createTdElem4.innerText = document.querySelector('label:nth-child(8)').textContent
-    createTdElem5.innerText = document.querySelector('label:nth-child(10)').textContent
-    createTdElem6.innerText = document.querySelector('.language legend:nth-child(1)').textContent
-   
-    createTrElem1.insertAdjacentElement('beforeend', createTdElem1)
-    createTrElem1.insertAdjacentElement('beforeend', createTdElem2)
-    createTrElem1.insertAdjacentElement('beforeend', createTdElem3)
-    createTrElem1.insertAdjacentElement('beforeend', createTdElem4)
-    createTrElem1.insertAdjacentElement('beforeend', createTdElem5)
-    createTrElem1.insertAdjacentElement('beforeend', createTdElem6)
-
-    const createTdElem21 = document.createElement('td')
-    const createTdElem22 = document.createElement('td')
-    const createTdElem23 = document.createElement('td')
-    const createTdElem24 = document.createElement('td')
-    const createTdElem25 = document.createElement('td')
-    const createTdElem26 = document.createElement('td')
-
-    createTdElem21.innerText = document.querySelector('input:nth-child(2)').value
-    createTdElem22.innerText = document.querySelector('input:nth-child(4)').value
+    createTdElem2[1].innerText = document.querySelector('#name').value
+    createTdElem2[2].innerText = document.querySelector('#surname').value
+    createTdElem2[3].innerText = document.querySelector('#date').value
 
     if(inputMale.checked){
-        createTdElem23.innerText = inputMale.value
+        createTdElem2[4].innerText = inputMale.value
     }
     else if(inputFemale.checked){
-        createTdElem23.innerText = inputFemale.value
+        createTdElem2[4].innerText = inputFemale.value
     }
 
     if(optionElemKyiv.selected){
-        createTdElem24.innerText = optionElemKyiv.value
+        createTdElem2[5].innerText = optionElemKyiv.value
     }
     else if(optionElemLondon.selected){
-        createTdElem24.innerText = optionElemLondon.value
+        createTdElem2[5].innerText = optionElemLondon.value
     }
 
-    createTdElem25.innerText = document.querySelector('textarea:nth-child(11)').value
+    createTdElem2[6].innerText = document.querySelector('#address').value
 
     const languageDiv = document.querySelector('.language')
     const inputElemInLanguageDiv = languageDiv.querySelectorAll('input')
@@ -100,20 +83,23 @@ function createTable() {
       if (inputElemInLanguageDiv[i].checked) {
         let createElemP = document.createElement('p')
         createElemP.innerText = inputElemInLanguageDiv[i].value
-        createTdElem26.insertAdjacentElement('beforeend', createElemP)
+        createTdElem2[7].insertAdjacentElement('beforeend', createElemP)
       }
     }
 
-    createTrElem2.insertAdjacentElement('beforeend', createTdElem21)
-    createTrElem2.insertAdjacentElement('beforeend', createTdElem22)
-    createTrElem2.insertAdjacentElement('beforeend', createTdElem23)
-    createTrElem2.insertAdjacentElement('beforeend', createTdElem24)
-    createTrElem2.insertAdjacentElement('beforeend', createTdElem25)
-    createTrElem2.insertAdjacentElement('beforeend', createTdElem26) 
+    for (let q = 1; q <= 7; q++){
+      createTrElem2.insertAdjacentElement('beforeend', createTdElem2[q])
+    }
 
-    
-    if(tableElem !== null){
-      tableElem.remove()
+
+    const areAllEmpty = () => {
+      return Array.from(createTrElem2.querySelectorAll('td')).every(
+        (cell) => cell.textContent.trim() === ''
+        );
+      }
+
+    if(tableElem.length === 2 || areAllEmpty() === true){
+      tableElem[0].remove()
     }
 }
 
