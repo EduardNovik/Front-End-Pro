@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrapper {
+            display: grid;
+            place-items: center;
+            height: 100vh;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 3fr 3fr;
+            max-width: 1100px;
+            place-items: center;
+            gap: 50px;   
+        }
+        .categories-block{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #categories{
+            padding-left: 0px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        ul {
+            list-style-type: none;
+        }
+
+        li {
+            text-align: center;
+            padding: 1rem;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            border: 2px solid black;
+            cursor: pointer;
+        }
+
+        li:active {
+            color: white;
+            background-color: orange;
+            box-shadow: 5px 6px 4px rgba(150, 138, 138, 0.658);
+        }
+        
+        li:hover {
+            box-shadow: 5px 6px 4px rgba(150, 138, 138, 0.658);
+        }
+
+        button {
+            padding: 0.5rem 2rem;
+            margin: 1rem 0;
+            background-color: transparent;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        button:active {
+            background-color: green;
+            border-radius: 10px;
+            box-shadow: 5px 6px 4px rgba(150, 138, 138, 0.658);
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            box-shadow: 5px 6px 4px rgba(150, 138, 138, 0.658);
+        }
+
+        .refresh{
+            background-color: royalblue;
+            color: white;
+            font-weight: 600;
+        }
+        #purchase {
+            width: 400px;
+        }
+        #description {
+            width: 400px;
+        }
+        #message{
+            margin-bottom: 10px;
+        }
+        #purchase form {
+            display: flex;
+            flex-direction: column;
+        }
+        #submit {
+            padding: 0.5rem 2rem;
+            margin: 1rem 0;
+            background-color: transparent;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        #submit:active {
+            background-color: green;
+            border-radius: 10px;
+            box-shadow: 5px 6px 4px rgba(150, 138, 138, 0.658);
+            color: white;
+            cursor: pointer;
+        }
+        #submit:hover {
+            box-shadow: 5px 6px 4px rgba(150, 138, 138, 0.658);
+        }
+        .delete-order{
+            padding: 0px;
+        }
+        .delete-order:hover{
+            background-color: red;
+        }
+        .delete-order:active{
+            background-color: rgb(182, 0, 0)
+        }
+    
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="categories-block">
+                <ul id="categories">
+                    <li data-category-id="1">Toys</li>
+                    <li data-category-id="2">Sports</li>
+                    <li data-category-id="3">Toys</li>
+                    <li data-category-id="4">Grocery</li>
+                    <li data-category-id="5">Garden</li>
+                </ul>
+                <button class="my-orders">My orders</button>
+                <button class="refresh">Back to Categories</button>
+            </div>
+            
+            <ul id="products">
+                <!-- <li data-product-id="1">Eggplant - Asian</li>
+                <li data-product-id="2">Jagermeister</li>
+                <li data-product-id="3">Wine - Lou Black Shiraz</li>
+                <li data-product-id="4">Beef - Ox Tongue</li>
+                <li data-product-id="5">Beef - Bones, Marrow</li> -->
+            </ul>
+            <div id="purchase">
+                <div id="description"></div>
+                <button id="buy-button">Buy</button>
+                <p id ='buy-message'></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="./lesson17 script1.js"></script>
+</body>
+
+</html>
