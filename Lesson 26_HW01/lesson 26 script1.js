@@ -39,19 +39,9 @@ function showWeather (data){
      <b class="description">${data.weather[0].description}</b>`
 }
 
+
 function showError (data) {
   weather.style.display = "flex";
   weather.innerHTML = `<h3 class="city-name">${data}</h3>`
 }
-
-
-
-
-
-
-
-
-
-
-
 
