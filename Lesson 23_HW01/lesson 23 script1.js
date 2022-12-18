@@ -114,9 +114,7 @@ products.forEach((product) => {
 
 
 function goToProductPage(e) {
-  let targetBtnStatus = e.target.closest('.availableProduct')
-  let checkTargetBtnStatus = targetBtnStatus.classList.contains('availableProduct') 
-  console.log(checkTargetBtnStatus);
+  let targetBtnStatus = e.target.closest('.availableProduct');
   let targetId = e.target.id;
   
   if (targetId === "") {
@@ -126,7 +124,7 @@ function goToProductPage(e) {
     }
   }
 
-  if(checkTargetBtnStatus === true){
+  if(targetBtnStatus !== null){
     history.pushState(`${targetId}`, `Product page`, `./lesson 23 test2.html`);
     window.location = "./lesson 23 test2.html";
   }else{
