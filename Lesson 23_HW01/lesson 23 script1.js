@@ -41,12 +41,12 @@
 
 
 const products = [
-    {id: 1, name: 'Car', price: 9000, isActive: 'true'},
-    {id: 2, name: 'Phone', price: 400, isActive: 'true'},
-    {id: 3, name: 'TV', price: 200, isActive: 'true'},
-    {id: 4, name: 'Book', price: 30, isActive: 'false'},
-    {id: 5, name: 'Xbox', price: 400, isActive: 'true'},
-    {id: 6, name: 'Laptop', price: 2200, isActive: 'false'}
+    {id: 1, name: 'Car', price: 9000, isActive: true},
+    {id: 2, name: 'Phone', price: 400, isActive: true},
+    {id: 3, name: 'TV', price: 200, isActive: true},
+    {id: 4, name: 'Book', price: 30, isActive: false},
+    {id: 5, name: 'Xbox', price: 400, isActive: true},
+    {id: 6, name: 'Laptop', price: 2200, isActive: false}
 ]
  
 const productsWraper = document.querySelector('.products')
@@ -96,8 +96,9 @@ products.forEach((product) => {
 
   const productBtnEl = new DomElClass("button");
   const productBtnElWithClass = productBtnEl.addClass("product__btn").addText(`Add to cart`);
-  if(product.isActive === 'false'){
-    productBtnElWithClass.setAtr('disabled', 'true')
+
+  if(!product.isActive){
+    productBtnElWithClass.setAtr('disabled', true)
   }else{
     domElWrapperWithClass.addClass("availableProduct")
   }
@@ -114,7 +115,8 @@ products.forEach((product) => {
 
 
 function goToProductPage(e) {
-  let targetBtnStatus = e.target.closest('.availableProduct');
+  let targetProductStatus = e.target.closest('.availableProduct');
+  let targetBtn = e.target.classList.contains('product__btn')
   let targetId = e.target.id;
   
   if (targetId === "") {
@@ -124,11 +126,9 @@ function goToProductPage(e) {
     }
   }
 
-  if(targetBtnStatus !== null){
+  if(!targetBtn && targetProductStatus !== null){
     history.pushState(`${targetId}`, `Product page`, `./lesson 23 test2.html`);
     window.location = "./lesson 23 test2.html";
-  }else{
-    return
   }
 }
 
@@ -144,7 +144,7 @@ productBlock.forEach((elem) => {
 window.addEventListener("popstate", () => {
   if (history.state !== null) {
     window.location = "./lesson 23 test2.html";
-  } else if (history.state === null) {
+  } else if (!history.state) {
     window.location = "./lesson 23 test1.html";
   }
 });
