@@ -1,0 +1,187 @@
+.side-nav-container{
+    background: linear-gradient(#e66465, #9198e5);
+    backdrop-filter: blur(5px);
+    border-right: 1px solid teal;
+    border-radius: 0 25px 25px 0 ;
+    width: 300px;
+    height: 100vh;
+    position: fixed;
+    color: white;
+    text-shadow: 1px 1px 2px rgb(1, 0, 0), 0 0 1em rgb(0, 1, 1), 0 0 0.2em rgb(0, 0, 0);
+    font-family: sans-serif;
+    z-index: 1;
+    margin-top: 66px;
+    transition: 0.4s;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.side-nav-heading{
+    display: flex;
+}
+.side-nav-heading p{
+    margin: 0;
+    padding-top: 60px;
+    padding-left: 10px;
+    font-weight: 700;
+    font-size: 25px;
+}
+
+.side-nav-btn{
+    position: absolute;
+    right: -30px;
+    width: 60px;
+    height: 60px;
+    margin-top:100px;
+    border-radius: 100%;
+    background-color: teal;
+    border: 2px solid white;
+}
+
+.side-nav-btn span {
+    display: block;
+    margin-top: 5px;
+    border: 2px solid white;
+    border-radius: 15px;
+    transition: 0.4s;
+}
+
+.side-nav-btn span:nth-child(1) {
+    margin-top: 0px;
+}
+
+.side-nav-btn-in:hover span:nth-child(1) {
+    width: 15px;
+    transform: translate(-3px, 8px) rotate(30deg);
+}
+
+.side-nav-btn-in:hover span:nth-child(2) {
+    display: none;
+}
+.side-nav-btn-in:hover span:nth-child(3) {
+    width: 15px;
+    transform: translate(-3px, -8px) rotate(-30deg);
+}
+
+.side-nav-btn span:nth-child(1) {
+    margin-top: 0px;
+}
+
+
+
+.side-nav-btn-out:hover span:nth-child(1) {
+    width: 15px;
+    transform: translate(3px, 8px) rotate(-30deg);
+}
+
+.side-nav-btn-out:hover span:nth-child(2) {
+    display: none;
+}
+.side-nav-btn-out:hover span:nth-child(3) {
+    width: 15px;
+    transform: translate(3px, -8px) rotate(30deg);
+}
+
+/* nx - not expandede */
+
+.side-nav-container-nx{
+    width: 85px;
+}
+
+
+
+
+
+
+.topPostsBlock {
+    display: flex;
+    align-items:flex-start;
+    gap: 50px;
+    margin-top: 90px;
+    cursor: pointer;
+}
+
+.topPostsBlock:hover,  .settingsBlock:hover, .logoutBlock:hover{
+    /* border: 1px solid teal; */
+    border-radius: 10px;
+    box-shadow: 0px 2px 8px black;
+    margin-top: 88px;
+    transition: 0.3s;
+    /* width: 25px; */
+}
+
+.topPostsBlock img{
+    padding-left: 25px;
+    width: 35px;
+}
+
+.side-nav-tools-out >  .topPostsBlock p{
+    display: none;
+}
+.side-nav-tools >  .topPostsBlock p{
+    margin-top: 5px;
+    margin-bottom: 0;
+    min-width: 80px
+}
+
+
+
+
+
+
+
+
+
+
+.settingsBlock {
+    display: flex;
+    align-items:flex-start;
+    gap: 50px;
+    margin-top: 90px;
+    cursor: pointer;
+}
+
+.settingsBlock img{
+    width: 35px;
+    padding-left: 25px;
+}
+
+.side-nav-tools-out > .settingsBlock p {
+    display: none;
+}
+.side-nav-tools >  .settingsBlock p{
+    margin-top: 5px;
+    margin-bottom: 0;
+    min-width: 80px
+}
+
+
+
+
+
+
+
+.logoutBlock  {
+    display: flex;
+    align-items:flex-start;
+    gap: 50px;
+    margin-top: 90px;
+
+    cursor: pointer;
+}
+
+
+.logoutBlock img{
+    width: 35px;
+    padding-left: 25px;
+}
+
+.side-nav-tools-out > .logoutBlock p {
+    display: none;
+}
+.side-nav-tools >  .logoutBlock p{
+    margin-top: 5px;
+    margin-bottom: 0;
+    min-width: 80px
+}
+

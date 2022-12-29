@@ -1,0 +1,19 @@
+.postDiv {
+    border: 1px solid teal;
+    margin-bottom: 20px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 20px;
+    width: 500px;
+    background-color: transparent;
+    backdrop-filter: blur(5px);
+}
+
+.postListDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
