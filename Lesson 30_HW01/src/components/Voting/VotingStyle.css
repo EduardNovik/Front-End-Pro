@@ -1,0 +1,26 @@
+.wrapper {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+}
+
+button {
+    appearance: none;
+    margin: 0.5em;
+    padding: 1px 6px;
+    border-width: 0;
+    border-style: none;
+    border-color: transparent;
+    background-color: transparent;
+    border-image: initial;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.counter {
+    text-align: center;
+}
