@@ -1,0 +1,78 @@
+.inputBlock {
+    min-height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.todoInput,
+.btnAdd {
+    padding: 0.5rem;
+    font-size: 2rem;
+    border: none;
+    background: white;
+    outline: none;
+    border-radius: 15px 0px 0px 15px;
+    height: 60px;
+}
+
+.btnAdd {
+    color: #16d8df;
+    background: white;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+    border-radius: 0px 15px 15px 0px;
+}
+
+.btnAdd:hover {
+    background-image: linear-gradient(120deg, #d14dbb, #16d8df);
+    color: white;
+}
+
+
+select {
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+   outline: none;
+   border: none;
+}
+
+
+select{
+   color:#16d8df;
+   font-family: 'Poppins', sans-serif;
+   width: 12rem;
+   cursor: pointer;
+   padding: 1rem;
+   font-size: 1rem;
+   height: 60px
+}
+
+
+.selectBlock {
+   margin: 1rem;
+   position: relative;
+   overflow: hidden;
+   border-radius: 15px 15px 15px 15px;
+}
+
+.selectBlock::after {
+   content: '\25BC';
+   position: absolute;
+   background-image:linear-gradient(120deg, #d14dbb, #16d8df);
+   height: 30px;
+   top: 0px;
+   right: 0px;
+   padding: 1rem;
+   pointer-events: none;
+   transition: all 0.3s ease;
+}
+
+.selectBlock:hover::after {
+   background: white;
+   color:#16d8df;
+   border-radius: 50% 50% 50% 50%;
+}
