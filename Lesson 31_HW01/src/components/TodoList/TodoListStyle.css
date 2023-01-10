@@ -1,0 +1,35 @@
+.todoBlock{
+   background: white;
+   margin: 0.5rem;
+   color: black;
+   font-size: 1.5rem;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   transition: all 0.5s ease;
+   border-radius: 15px 15px 15px 15px;
+   padding-left: 0.5rem;
+   padding-right: 0rem;
+}
+
+
+.todoBlock:hover {
+    color: #16d8df;
+    box-shadow: 1px 4px 10px 1px;
+}
+
+.fall {
+   transform: translateY(8rem) rotateZ(20deg);
+   opacity: 0;
+}
+
+
+.completed{
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+ 
+ .doneBtn{
+    border-radius: 0 15px 15px 0;
+}
