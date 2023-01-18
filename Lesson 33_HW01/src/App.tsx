@@ -4,7 +4,6 @@ import Users from './components/Users/Users';
 import Albums from './components/Albums/Albums';
 import Photos from './components/Photos/Photos';
 
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -19,7 +18,6 @@ const router = createBrowserRouter([
     element:  <Photos/>,
   },  
 ]);
-
 
 function App() {
 

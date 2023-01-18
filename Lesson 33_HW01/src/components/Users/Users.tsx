@@ -8,7 +8,6 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
 
-
 const Users = () => {
   const [usersInfo, setUsersInfo] = useState<any>(null);
 

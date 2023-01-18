@@ -1,45 +1,39 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import { Button, CardActionArea, CardActions } from "@mui/material";
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
+import { Button } from "@mui/material";
 
 const Photos = () => {
   const { albumId } = useParams();
   const [userPhoto, setUserPhoto] = useState<any>();
 
   useEffect(() => {
-    fetch(`https://jsonplaceholder.typicode.com/photos/${albumId}`)
+    fetch(`https://jsonplaceholder.typicode.com/albums/${albumId}/photos`)
       .then((response) => response.json())
       .then((data) => setUserPhoto(data))
       .catch((err) => console.log(err));
   }, []);
 
   return (
-    <Card sx={{ width: 300, maxHeight: "auto" }}>
-      <CardActionArea>
-        {userPhoto && (
-          <CardMedia component="img" image={`${userPhoto.thumbnailUrl}`} />
-        )}
-        {userPhoto && (
-          <CardContent>
-            <Typography variant="body2" color="text.secondary">
-              {userPhoto.title}
-            </Typography>
-          </CardContent>
-        )}
-        {userPhoto && (
-          <Button size="small" color="warning" variant="contained" sx={{m:2}}>
-            <Link to={`/`} style={{color: 'white'}}>
-              Go to Users list
-            </Link>
-          </Button>
-        )}
-      </CardActionArea>
-    </Card>
+    <div>
+      <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
+        {userPhoto && userPhoto.map((item:any) => (
+          <ImageListItem key={item.id}>
+            <img
+              src={`${item.thumbnailUrl}?w=164&h=164&fit=crop&auto=format`}
+              srcSet={`${item.thumbnailUrl}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+              alt={item.title}
+              loading="lazy"
+            />
+          </ImageListItem>
+        ))}
+      </ImageList>
+      <Button variant="contained" size='small'>
+        <Link to={'/'} style={{color:'white'}}>Home page</Link>
+      </Button>
+    </div>
   );
 };
 
