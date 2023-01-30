@@ -1,11 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit'
-import todoReducer from './todoSlice'
+import todoReducer, { getLocalTodos } from './todoSlice'
 import filteredTodoReducer from './filteredTodoSlice'
 
 export const store = configureStore <any> ({
     reducer: {
         createTodos: todoReducer,
         createFilteredTodos: filteredTodoReducer
+    },
+    preloadedState: {
+        createTodos:{
+            data: getLocalTodos()
+        }
     } 
 })
 

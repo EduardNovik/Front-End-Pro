@@ -5,32 +5,23 @@ import { FcFullTrash, FcCheckmark } from "react-icons/fc";
 
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux';
-import { updateTodo} from '../../rdx/todoSlice';
+import { completeTodo, deleteTodoItem } from '../../rdx/todoSlice';
+import { AppDispatch } from '../../rdx/store'
 
 
 
 const TodoList = () => {
 
-  const dispatch = useDispatch()
-  const todosRedux = useSelector((state:any) => state.createTodos.data)
+  const dispatch = useDispatch<AppDispatch>()
   const filteredTodosRedux = useSelector((state: any) => state.createFilteredTodos.data);
 
-
+  
   const deleteHandler = (id:any) => {
-      const newIsDeletedState = todosRedux.map((todo:any)=> todo.id !== id ? todo :
-      {id:todo.id, text:todo.text, completed:todo.completed, isDeleted:!todo.isDeleted})
-      dispatch(updateTodo(newIsDeletedState))
-
-      setTimeout(()=>{
-        const deleteTask = todosRedux.filter((todo:any) => todo.id !== id)
-        dispatch(updateTodo(deleteTask))
-      }, 300)
+    dispatch(deleteTodoItem(id))
   }
 
   const completeHandler = (id: any) => {
-    const newTodosRedux = todosRedux.map((todo: any) => todo.id !== id ? todo : 
-    {id:todo.id, text:todo.text, completed:!todo.completed, isDeleted:todo.isDeleted})
-    dispatch(updateTodo(newTodosRedux))
+    dispatch(completeTodo(id))
   }
 
 

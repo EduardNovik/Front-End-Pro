@@ -3,10 +3,11 @@ import { useState , useEffect } from 'react'
 import TodoForm from './components/TodoForm/TodoForm'
 import TodoList from './components/TodoList/TodoList'
 
-import { updateTodo } from './rdx/todoSlice'
-import { updateFilteredTodo } from './rdx/filteredTodoSlice'
+import { saveLocalTodosMiddleware } from './rdx/todoSlice'
+import { filterTodo } from './rdx/filteredTodoSlice'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
+import { AppDispatch } from './rdx/store'
  
 
 
@@ -14,25 +15,11 @@ function App() {
   
   const [status, setStatus] = useState("all");
   const todosRedux = useSelector((state: any) => state.createTodos.data);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   const filterHandler = () => {
-    switch (status) {
-      case "completed":
-        dispatch(updateFilteredTodo(todosRedux.filter((todo: any) => todo.completed === true)));
-        break;
-      case "uncompleted":
-        dispatch(updateFilteredTodo(todosRedux.filter((todo: any) => todo.completed !== true)));
-        break;
-      default:
-        dispatch(updateFilteredTodo(todosRedux));
-        break;
-    }
+    dispatch(filterTodo(status))
   };
-
-  useEffect(() => {
-    getLocalTodos();
-  }, []);
 
   useEffect(() => {
     filterHandler();
@@ -40,18 +27,7 @@ function App() {
   }, [todosRedux, status]);
 
   const saveLocalTodos = () => {
-    localStorage.setItem("todos", JSON.stringify(todosRedux));
-  };
-
-  const getLocalTodos = () => {
-    if (localStorage.getItem("todos") === null) {
-      localStorage.setItem("todos", JSON.stringify([]));
-    } else {
-      let todosFromLocalStorage = JSON.parse(
-        localStorage.getItem("todos") as any
-      );
-      dispatch(updateTodo(todosFromLocalStorage));
-    }
+    dispatch(saveLocalTodosMiddleware(todosRedux))
   };
 
   return (
